@@ -2,7 +2,7 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=utf-8
 set number
-
+set incsearch
 
 set ai                          " set auto-indenting on for programming
 set showmatch                   " automatically show matching brackets. works like it does in bbedit.
