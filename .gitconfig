@@ -2,24 +2,38 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	required = true
+
 [user]
 	name = Rodrigo F. Fernandes
 	email = rodrigoff@live.com
-[url "https://"]
-	insteadOf = git://
+
 [credential]
+
 [core]
 	editor = vim
+
+[merge]
+	tool = p4merge
+
 [mergetool]
 	prompt = true
 	keepBackup = false
 	keepTemporaries = false
 
-[merge]
-	tool = p4merge
+[mergetool "p4merge"]
+    cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "\"$PWD/$BASE\"" "\"$PWD/$LOCAL\""  "\"$PWD/$REMOTE\"" "\"$PWD/$MERGED\""
+    keepTemporaries = false
+	trustExitCode = false
+	keepBackup = false
 
 [diff]
 	tool = p4merge
+
+[difftool]
+	prompt = true
+
+[difftool "p4merge"]
+    cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge "\"$LOCAL\"" "\"$REMOTE\""
 
 [alias]
 	unstage = reset HEAD --
@@ -53,18 +67,9 @@
 	wtl = worktree list
 	wta = worktree add
 	wtp = worktree prune
-[mergetool "p4merge"]
-	path = C:/Program Files/Perforce/p4merge.exe
-[difftool "p4merge"]
-	path = C:/Program Files/Perforce/p4merge.exe
-[difftool]
-	prompt = true
-[difftool "vsdiffmerge"]
-	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
-	keepBackup = false
-[mergetool "vsdiffmerge"]
-	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Enterprise\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
-	keepBackup = false
-	trustExitCode = true
+
 [fetch]
 	prune = true
+
+[http]
+	postBuffer = 524288000
